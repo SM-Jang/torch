@@ -33,7 +33,6 @@ if __name__ == '__main__':
     
     path = './data'
     
-    if os.path.isdir(): save_wine(path)
-    else: os.mkdir('data')
-        
+    if os.path.isdir(path) == False: os.mkdir('data') 
     
+    save_wine(path)

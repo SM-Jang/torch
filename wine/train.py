@@ -13,7 +13,7 @@ def get_arguments():
     parser = argparse.ArgumentParser()
     
     # Dataset arguments
-    parser.add_argument('--check_point', type=str, default='./check_point/')
+    parser.add_argument('--check_point', type=str, default='./check_point')
     parser.add_argument('--data_path', type=str, default='./data/wine_data.npy')
     parser.add_argument('--label_path', type=str, default='./data/wine_label.npy')
     
@@ -85,7 +85,9 @@ if __name__ == '__main__':
 
     print("The end!!")
     
+    if os.path.isdir(args.check_point) == False: os.mkdir("check_point")
+    
     torch.save({
         'model': net.state_dict(),
         'optimizer': optimizer.state_dict()
-    }, args.check_point + 'save.pth')
+    }, args.check_point + '/save.pth')
